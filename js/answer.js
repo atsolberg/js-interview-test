@@ -15,36 +15,7 @@ function generateTree(employees) {
 	var ceo = null; // Should be a PersonTreeNode object at the end;
 
 	// YOUR CODE STARTS HERE
-	/** @type {Person} boss - The person object of the ceo. */
-	var boss = null;
-	/** @type {Object} people - A map of Person.id to Person */
-	var people = {}; 
-
-	employees.forEach(function (person) {
-
-		var personNode = people[person.id];
-		if (personNode === undefined) {
-			personNode = new PersonTreeNode(person);
-			people[person.id] = personNode;
-		}
-		
-		var manager = person.manager;
-		if (manager === null) {
-			boss = person;
-		} else {
-
-			var managerNode = people[manager.id];
-			if (managerNode === undefined) {
-				managerNode = new PersonTreeNode(manager);
-				people[manager.id] = managerNode;
-			}
-
-			managerNode.directReports.push(personNode);
-		}
-
-	});
-
-	ceo = people[boss.id];
+	
 	// YOUR CODE ENDS HERE
 
 	return ceo;
