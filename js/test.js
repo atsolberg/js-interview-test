@@ -56,34 +56,34 @@ PersonTreeNode.prototype.toString = function () {
   // Build employees array
   var employees = [];
 
-  var kirk = new Person('a', 'Kirk', null);
+  var kirk = new Person(uuid(), 'Kirk', null);
   employees.push(kirk);
 
-  var mark = new Person('b', 'Mark', kirk);
+  var mark = new Person(uuid(), 'Mark', kirk);
   employees.push(mark);
 
-  var tom1 = new Person('c', 'Tom', mark);
+  var tom1 = new Person(uuid(), 'Tom', mark);
   employees.push(tom1);
 
-  var nick = new Person('d', 'Nick', tom1);
+  var nick = new Person(uuid(), 'Nick', tom1);
   employees.push(nick);
 
-  var ben = new Person('e', 'Ben', tom1);
+  var ben = new Person(uuid(), 'Ben', tom1);
   employees.push(ben);
 
-  var david = new Person('f', 'David', ben);
+  var david = new Person(uuid(), 'David', ben);
   employees.push(david);
 
-  var stacey = new Person('g', 'Stacey', nick);
+  var stacey = new Person(uuid(), 'Stacey', nick);
   employees.push(stacey);
 
-  var corey = new Person('h', 'Corey', nick);
+  var corey = new Person(uuid(), 'Corey', nick);
   employees.push(corey);
 
-  var tom2 = new Person('i', 'Tom', stacey);
+  var tom2 = new Person(uuid(), 'Tom', stacey);
   employees.push(tom2);
 
-  var julie = new Person('j', 'Julie', stacey);
+  var julie = new Person(uuid(), 'Julie', stacey);
   employees.push(julie);
 
   /** 
@@ -118,7 +118,7 @@ PersonTreeNode.prototype.toString = function () {
     return result;
   }
 
-  /** Just an array shuffle function. */
+  /** Function to shuffle an array. */
   function shuffle(array) {
     
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -137,6 +137,14 @@ PersonTreeNode.prototype.toString = function () {
     }
 
     return array;
+  }
+
+  /** Function to generate UUIDs */
+  function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+    });
   }
 
   /**
