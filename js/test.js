@@ -186,7 +186,7 @@ PersonTreeNode.prototype.toString = function () {
       if (flatTree !== expectedTree) {
         result.success = false;
         result.message = 'Incorrect tree, <br>expected: ' + expectedTree + '<br>'
-      	  + 'actual: ' + flattTree;
+      	  + 'actual: ' + flatTree;
       }
 
     } catch (error) {
