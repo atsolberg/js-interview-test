@@ -94,17 +94,18 @@ PersonTreeNode.prototype.toString = function () {
     var result = treeRoot.person.name;
     var first = true;
 
+    if (treeRoot.visited) throw 'Person ' + treeRoot.person +  ' reports to more than one person.';
+    treeRoot.visited = true;
+
     if (treeRoot.directReports.length) {
 
       result += '{';
       treeRoot.directReports
-      .splice(0) // copy it
-      .sort(function (o1, o2) { // sort it
-        if (o1.person.name.toUpperCase() < o2.person.name.toUpperCase()) return -1;
-        if (o1.person.name.toUpperCase() > o2.person.name.toUpperCase()) return 1;
-        return 0;
+      .slice(0) // Copy it
+      .sort(function (o1, o2) { // Sort it
+        return o1.person.name.toUpperCase().localCompare(o2.person.name.toUpperCase());
       })
-      .forEach(function (childNode) { // add each direct report to result
+      .forEach(function (childNode) { // Add each direct report to result
         if (!first) {
           result += ',';
         }
@@ -154,36 +155,44 @@ PersonTreeNode.prototype.toString = function () {
    */
   function testGenerateTree() {
 
-    var expectedTree = 'Kirk{Mark{Tom{Ben{David},Nick{Corey,Stacey{Julie,Tom}}}}}';
-    var result = {
-      success: true
-    }
+    try {
 
-    var shuffled = shuffle(employees.splice(0));
+      var expectedTree = 'Kirk{Mark{Tom{Ben{David},Nick{Corey,Stacey{Julie,Tom}}}}}';
+      var result = {
+        success: true
+      }
 
-    var rootNode = generateTree(shuffled);
+      var shuffled = shuffle(employees.splice(0));
 
-    if (rootNode === null) {
+      var rootNode = generateTree(shuffled);
+
+      if (rootNode === null) {
+        result.success = false;
+        result.message = 'The returned node was null';
+
+        return result;
+      }
+
+      if (rootNode.person.name !== 'Kirk') {
+        result.success = false;
+        result.message = 'Incorrect ceo, expected: Kirk, actual: ' 
+          + rootNode.person.name;
+
+        return result;
+      }
+
+      var flatTree = outputFlatTree(rootNode);
+
+      if (flatTree !== expectedTree) {
+        result.success = false;
+        result.message = 'Incorrect tree, <br>expected: ' + expectedTree + '<br>'
+      	  + 'actual: ' + flattTree;
+      }
+
+    } catch (error) {
       result.success = false;
-      result.message = 'The returned node was null';
-
-      return result;
-    }
-
-    if (rootNode.person.name !== 'Kirk') {
-      result.success = false;
-      result.message = 'Incorrect ceo, expected: Kirk, actual: '
-      	+ rootNode.person.name;
-
-      return result;
-    }
-
-    var flatTree = outputFlatTree(rootNode);
-
-    if (flatTree !== expectedTree) {
-      result.success = false;
-      result.message = 'Incorrect tree, <br>expected: ' + expectedTree + '<br>'
-    	  + 'actual: ' + flattTree;
+      result.message = 'Exception occurred generating tree: <br><br>' + error + '<br><br>'
+        + 'Check the console for errors. (F12) in most browsers.';
     }
 
     return result;
