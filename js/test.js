@@ -103,7 +103,7 @@ PersonTreeNode.prototype.toString = function () {
       treeRoot.directReports
       .slice(0) // Copy it
       .sort(function (o1, o2) { // Sort it
-        return o1.person.name.toUpperCase().localCompare(o2.person.name.toUpperCase());
+        return o1.person.name.toUpperCase().localeCompare(o2.person.name.toUpperCase());
       })
       .forEach(function (childNode) { // Add each direct report to result
         if (!first) {
