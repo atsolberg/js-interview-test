@@ -39,7 +39,12 @@ function PersonTreeNode (person) {
 
 
   self.person = person;
-  self.directReports = []; // Array of PersonTreeNode objects.
+
+  /**
+   * Array of PersonTreeNode objects.
+   * Note: a 'direct report' is someone who reports directly for you, i.e. you are their manager.
+   */
+  self.directReports = [];
 
   return self;
 };
