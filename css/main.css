@@ -97,17 +97,20 @@ textarea {
    
 html { font-family: 'Open Sans', sans-serif; }
 
-.main-section { padding: 20px; }
+.main-section { 
+    padding: 20px; 
+    max-width: 1080px;
+    margin: 0 auto;
+}
 
-
-
-
-
-
-
-
-
-
+.label { 
+    font-family: monospace;
+    background-color: #efefef;
+    padding: 2px 3px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+ }
+ .text-danger { color: #aa3333; }
 
 
 
