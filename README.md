@@ -1,7 +1,7 @@
 # js-interview-test
 A JavaScript problem to solve before interviews.
 
-- Convert an array of `Persons` objects to a tree of `PersonTreeNode` objects.
+### Convert an array of `Persons` objects to a tree of `PersonTreeNode` objects.
 
 ## TO SETUP
 - Clone the repo.
