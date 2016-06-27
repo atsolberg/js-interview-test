@@ -11,5 +11,5 @@ A JavaScript problem to solve before interviews.
 - The test uses two JavaScript classes `Person` and `PersonTreeNode`.
 - The `generateTree` function recieves a list of `Person` objects and should return the root PersonTreeNode (the ceo).
 - Each `PersonTreeNode`'s `directReports` array should contain a `PersonTreeNode` for each direct report.
-- The `js/test.js` file will use your function in the `js/answer.js` file to see if passes the test.
+- The `js/test.js` file will use your `generateTree` function in the `js/answer.js` file to see if passes the test.
 - Refresh the page or click the button to rerun the test.
