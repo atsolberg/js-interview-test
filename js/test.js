@@ -143,6 +143,7 @@
       result.success = false;
       result.message = 'Exception occurred generating tree: <br><br>' + error + '<br><br>'
         + 'Check the console for errors. (F12) in most browsers.';
+      result.error = error;
     }
 
     return result;
@@ -155,6 +156,7 @@
       $('#test-results').html('Test Passed!').css({ color: 'green' });
     } else {
       $('#test-results').html('Test Failed:<br>' + result.message).css({ color: 'red' });
+      if (result.error) throw result.error;
     }
   });
 

@@ -111,6 +111,7 @@ html { font-family: 'Open Sans', sans-serif; }
     border-radius: 2px;
  }
  .text-danger { color: #aa3333; }
+ pre { font-size: 10px; }
 
 
 

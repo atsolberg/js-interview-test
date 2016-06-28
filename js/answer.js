@@ -24,7 +24,7 @@ function generateTree(employees) {
   var ceo = null; // Should be a PersonTreeNode object at the end;
 
   // YOUR CODE STARTS HERE
-  
+
   // YOUR CODE ENDS HERE
 
   return ceo;
