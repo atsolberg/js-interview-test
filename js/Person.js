@@ -24,7 +24,10 @@ function Person (id, name, manager) {
   return self;
 };
 
-/** @returns {String} The string representation of this Person. */
+/** 
+ * The string representation of this Person.
+ * @returns {String}
+ */
 Person.prototype.toString = function () {
   return 'Person [name=' + this.name + ', manager=' + this.manager + ', id=' + this.id + ']';
 };

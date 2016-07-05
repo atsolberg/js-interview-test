@@ -22,7 +22,10 @@ function PersonTreeNode (person) {
   return self;
 };
 
-/** @returns {String} The string representation of this PersonTreeNode. */
+/** 
+ * The string representation of this PersonTreeNode.
+ * @returns {String} 
+ */
 PersonTreeNode.prototype.toString = function () {
   return 'PersonTreeNode [person=' + this.person + ', directReports=' + this.directReports + ']';
 };
