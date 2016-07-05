@@ -1,13 +1,12 @@
 /** 
  * The TEST module.
+ * @namespace TEST
  */
 TEST = (function () {
-  
-  /** @module TEST */
 
   'use strict';
 
-  // @type {object} - The public API of this module.
+  /** @type {object} - The public API of this module. */
   var module = {};
 
   // PRIVATE API
