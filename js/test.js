@@ -1,4 +1,7 @@
-/* TEST */
+/** 
+ * The TEST module.
+ * @module TEST
+ */
 TEST = (function () {
 
   'use strict';
