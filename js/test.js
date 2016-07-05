@@ -40,7 +40,7 @@
    * Converts a PersonTreeNode into a string representing a tree 
    * with the node as the root, branching out to all direct reports recursively.
    * @param {PersonTreeNode} treeRoot - The node to use as the tree root, should be the CEO.
-   * @returns {String} result - The string representation of the node. 
+   * @returns {String} The string representation of the node. 
    */
   function outputFlatTree(treeRoot) {
 
