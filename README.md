@@ -1,6 +1,8 @@
 # js-interview-test
 A JavaScript problem to solve before interviews.
 
+[![API Doc](https://doclets.io/atsolberg/js-interview-test/master.svg)](https://doclets.io/atsolberg/js-interview-test/master)
+
 ### Convert an array of `Persons` objects to a tree of `PersonTreeNode` objects.
 
 ## TO SETUP
