@@ -6,16 +6,15 @@
  * @param {Person} person - The person object for this tree node.
  */
 function PersonTreeNode (person) {
+  
   // Just incase they forgot the 'new' keyword.
-  var self = this instanceof PersonTreeNode
-  ? this
-  : Object.create(PersonTreeNode.prototype);
+  var self = this instanceof PersonTreeNode ? this : Object.create(PersonTreeNode.prototype);
 
-
+  /** @type {Person} - The person object for this tree node. */
   self.person = person;
 
   /**
-   * Array of PersonTreeNode objects.
+   * @type {PersonTreeNode[]} - Array of PersonTreeNode objects of people who report to this person.
    * Note: a 'direct report' is someone who reports directly for you, i.e. you are their manager.
    */
   self.directReports = [];
@@ -23,6 +22,7 @@ function PersonTreeNode (person) {
   return self;
 };
 
+/** @returns The string representation of this PersonTreeNode. */
 PersonTreeNode.prototype.toString = function () {
   return 'PersonTreeNode [person=' + this.person + ', directReports=' + this.directReports + ']';
 };

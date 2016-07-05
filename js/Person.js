@@ -8,18 +8,23 @@
  * @param {Person} manager - The employee's manager.
  */
 function Person (id, name, manager) {
+  
   // Just incase they forgot the 'new' keyword.
-  var self = this instanceof Person
-  ? this
-  : Object.create(Person.prototype);
+  var self = this instanceof Person ? this : Object.create(Person.prototype);
 
-  self.name = name;
-  self.manager = manager;
+/** @type {String} - A uuid uniquely identifiying this person. */
   self.id = id;
+
+  /** @type {String} - The name of this person. */
+  self.name = name;
+
+  /** @type {Person} - The manager of this person. */
+  self.manager = manager;
 
   return self;
 };
 
+/** @returns The string representation of this Person. */
 Person.prototype.toString = function () {
   return 'Person [name=' + this.name + ', manager=' + this.manager + ', id=' + this.id + ']';
 };

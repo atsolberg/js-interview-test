@@ -36,9 +36,7 @@
   var julie = new Person(uuid(), 'Julie', stacey);
   employees.push(julie);
 
-  /** 
-   * Returns the string representation of the flattened tree.
-   */
+  /** @returns - The string representation of the tree. */
   function outputFlatTree(treeRoot) {
 
     var result = treeRoot.person.name;
@@ -69,7 +67,7 @@
     return result;
   }
 
-  /** Function to shuffle an array. */
+  /** Shuffle an array. */
   function shuffle(array) {
     
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -90,7 +88,7 @@
     return array;
   }
 
-  /** Function to generate UUIDs */
+  /** @returns {String} uuid - An auto-generated 32 character UUID. */
   function uuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -101,7 +99,7 @@
   /**
    * Verify that generateTree will produce the root person tree node (the CEO)
    * and that each persons list of direct reports is correct all the way down the tree.
-   * @Return {boolean} result - true if the test passed, false otherwise.
+   * @returns {boolean} result - true if the test passed, false otherwise.
    */
   function testGenerateTree() {
 
