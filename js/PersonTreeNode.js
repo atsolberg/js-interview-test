@@ -2,6 +2,7 @@
  * Object representing a tree node of Person.
  * Contains the Person and an Array of PersonTreeNodes 
  * representing all PersonTreeNode's with Person as their respective manager.
+ * @constructor
  * @param {Person} person - The person object for this tree node.
  */
 function PersonTreeNode (person) {

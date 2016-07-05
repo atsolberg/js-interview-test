@@ -2,6 +2,7 @@
  * Object to represent an employee. 
  * Person consists of a name and a manager (also of type Person)
  * A null manager represents the CEO/president (top of the organization).
+ * @constructor
  * @param {String} id - The unique employee identifier.
  * @param {String} name - The name of the employee.
  * @param {Person} manager - The employee's manager.

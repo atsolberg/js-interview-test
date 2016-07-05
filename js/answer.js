@@ -2,6 +2,7 @@
 /**
  * Given an array of Person objects, returns the root PersonTreeNode (the CEO).
  * @param {Person[]} employees - An array of Person objects representing all the employees of the company.
+ * @returns {PersonTreeNode} ceo - The CEO of the organization.
  */
 function generateTree(employees) {
 
