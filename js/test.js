@@ -13,6 +13,7 @@ TEST = (function () {
 
   /** 
    * Creates a uuid and returns an auto-generated 32 character UUID.
+   * @private
    * @returns {String} The auto-generated 32 character UUID.
    */
   var _uuid = function () {
@@ -22,7 +23,7 @@ TEST = (function () {
     });
   };
 
-  /** @type {Person[]} - Array of Persons in this organization. */
+  /** @private @type {Person[]} - Array of Persons in this organization. */
   var _employees = [];
 
   var _kirk = new Person(_uuid(), 'Kirk', null);
@@ -58,6 +59,7 @@ TEST = (function () {
   /** 
    * Converts a PersonTreeNode into a string representing a tree 
    * with the node as the root, branching out to all direct reports recursively.
+   * @private
    * @param {PersonTreeNode} treeRoot - The node to use as the tree root, should be the CEO.
    * @returns {String} The string representation of the node. 
    */
@@ -91,7 +93,7 @@ TEST = (function () {
     return result;
   };
 
-  /** Shuffle an array. */
+  /** @private Shuffle an array. */
   var _shuffle = function (array) {
     
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -115,6 +117,7 @@ TEST = (function () {
   /**
    * Verify that generateTree will produce the root person tree node (the CEO)
    * and that each persons list of direct reports is correct all the way down the tree.
+   * @private
    * @returns {boolean} `true` if the test passed, `false` otherwise.
    */
   var _testGenerateTree = function () {
