@@ -1,12 +1,13 @@
 /** 
  * The TEST module.
- * @module TEST
  */
 TEST = (function () {
+  
+  /** @module TEST */
 
   'use strict';
 
-  // Object representing the public API of this module.
+  // @type {object} - The public API of this module.
   var module = {};
 
   // PRIVATE API
