@@ -6,7 +6,7 @@ TEST = (function () {
 
   'use strict';
 
-  /** @type {object} - The public API of this module. */
+  /** The public API of this module. */
   var module = {};
 
   // PRIVATE API
