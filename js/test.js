@@ -167,7 +167,11 @@ TEST = (function () {
   };
 
   // PUBLIC API
-
+  
+  /** 
+   * Run the test, excuting the 'generateTree' function and 
+   * showing the pass/fail results on the page.
+   */
   module.run = function () {
     var result = _testGenerateTree();
     if (result.success) {
