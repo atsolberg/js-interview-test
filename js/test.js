@@ -171,6 +171,7 @@ TEST = (function () {
   /** 
    * Run the test, excuting the 'generateTree' function and 
    * showing the pass/fail results on the page.
+   * @memberof TEST
    */
   module.run = function () {
     var result = _testGenerateTree();
