@@ -7,6 +7,7 @@
 function generateTree(employees) {
 
   /**
+   * @ignore
    * INSTRUCTIONS: 
    * 1. ONLY edit this function and nothing else!.
    *
