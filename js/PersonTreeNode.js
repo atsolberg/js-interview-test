@@ -6,7 +6,7 @@
  * @param {Person} person - The person object for this tree node.
  */
 function PersonTreeNode (person) {
-  
+
   // Just incase they forgot the 'new' keyword.
   var self = this instanceof PersonTreeNode ? this : Object.create(PersonTreeNode.prototype);
 
@@ -22,7 +22,7 @@ function PersonTreeNode (person) {
   return self;
 };
 
-/** @returns The string representation of this PersonTreeNode. */
+/** @returns {String} The string representation of this PersonTreeNode. */
 PersonTreeNode.prototype.toString = function () {
   return 'PersonTreeNode [person=' + this.person + ', directReports=' + this.directReports + ']';
 };

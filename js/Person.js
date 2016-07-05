@@ -8,7 +8,7 @@
  * @param {Person} manager - The employee's manager.
  */
 function Person (id, name, manager) {
-  
+
   // Just incase they forgot the 'new' keyword.
   var self = this instanceof Person ? this : Object.create(Person.prototype);
 
@@ -24,7 +24,7 @@ function Person (id, name, manager) {
   return self;
 };
 
-/** @returns The string representation of this Person. */
+/** @returns {String} The string representation of this Person. */
 Person.prototype.toString = function () {
   return 'Person [name=' + this.name + ', manager=' + this.manager + ', id=' + this.id + ']';
 };
