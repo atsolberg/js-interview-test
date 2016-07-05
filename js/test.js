@@ -5,10 +5,7 @@ TEST = (function () {
 
   'use strict';
 
-  /**
-   * The public API of this module.
-   * @namespace TEST
-   */
+  //The object representing the public API of this module.
   var module = {};
 
   // PRIVATE API
