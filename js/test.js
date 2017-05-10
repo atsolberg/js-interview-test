@@ -1,4 +1,4 @@
-/** 
+/**
  * The TEST module.
  * @namespace TEST
  */
@@ -11,7 +11,7 @@ TEST = (function () {
 
   // PRIVATE API
 
-  /** 
+  /**
    * Creates a uuid and returns an auto-generated 32 character UUID.
    * @private
    * @returns {String} The auto-generated 32 character UUID.
@@ -56,12 +56,12 @@ TEST = (function () {
   var _julie = new Person(_uuid(), 'Julie', _stacey);
   _employees.push(_julie);
 
-  /** 
-   * Converts a PersonTreeNode into a string representing a tree 
+  /**
+   * Converts a PersonTreeNode into a string representing a tree
    * with the node as the root, branching out to all direct reports recursively.
    * @private
    * @param {PersonTreeNode} treeRoot - The node to use as the tree root, should be the CEO.
-   * @returns {String} The string representation of the node. 
+   * @returns {String} The string representation of the node.
    */
   var _stringifyTree = function (treeRoot) {
 
@@ -118,48 +118,56 @@ TEST = (function () {
    * Verify that generateTree will produce the root person tree node (the CEO)
    * and that each persons list of direct reports is correct all the way down the tree.
    * @private
+   * @param {boolean} [shuffle] - if true, the test will used a shuffled array.
    * @returns {boolean} `true` if the test passed, `false` otherwise.
    */
-  var _testGenerateTree = function () {
-
+  var _testGenerateTree = function (shuffle) {
+  
+    var employees = _employees.slice(0);
+    if (shuffle) _shuffle(employees);
+    
+    var expected = 'Kirk{Mark{Tom{Ben{David},Nick{Corey,Stacey{Julie,Tom}}}}}';
+    var result = { success: true };
+    
     try {
 
-      var expectedTree = 'Kirk{Mark{Tom{Ben{David},Nick{Corey,Stacey{Julie,Tom}}}}}';
-      var result = {
-        success: true
+      var rootNode = generateTree(employees);
+
+      if (typeof rootNode === 'undefined') {
+        result.success = false;
+        result.message = 'The returned node was `undefined`';
+
+        return result;
       }
-
-      var shuffled = _shuffle(_employees.splice(0));
-
-      var rootNode = generateTree(shuffled);
 
       if (rootNode === null) {
         result.success = false;
-        result.message = 'The returned node was null';
+        result.message = 'The returned node was `null`';
 
         return result;
       }
 
       if (rootNode.person.name !== 'Kirk') {
         result.success = false;
-        result.message = 'Incorrect ceo, expected: Kirk, actual: ' 
+        result.message = 'Incorrect ceo, expected: Kirk, actual: '
           + rootNode.person.name;
 
         return result;
       }
 
-      var flatTree = _stringifyTree(rootNode);
+      var actual = _stringifyTree(rootNode);
 
-      if (flatTree !== expectedTree) {
+      if (actual !== expected) {
         result.success = false;
-        result.message = 'Incorrect tree, <br>expected: ' + expectedTree + '<br>'
-      	  + 'actual: ' + flatTree;
+        result.message = 'Incorrect tree, <br>expected: ' + expected + '<br>'
+          + 'actual: ' + actual;
       }
 
     } catch (error) {
       result.success = false;
-      result.message = 'Exception occurred generating tree: <br><br>' + error + '<br><br>'
-        + 'Check the console for errors. (F12) in most browsers.';
+      result.message = 'Exception occurred generating tree:'
+              + '<pre>' + error.stack + '</pre>'
+              + 'Check the console for errors. (F12) in most browsers.';
       result.error = error;
     }
 
@@ -168,19 +176,30 @@ TEST = (function () {
 
   // PUBLIC API
   
-  /** 
-   * Run the test, excuting the 'generateTree' function and 
+  /**
+   * Run the test, excuting the 'generateTree' function and
    * showing the pass/fail results on the page.
    * @memberof TEST
    */
   module.run = function () {
+    
     var result = _testGenerateTree();
+    
     if (result.success) {
-      $('#test-results').html('Test Passed!').css({ color: 'green' });
-    } else {
-      $('#test-results').html('Test Failed:<br>' + result.message).css({ color: 'red' });
-      if (result.error) throw result.error;
+      
+      for (var i = 0; i < 10; i++) {
+        result = _testGenerateTree(true);
+        if (!result.success) break;
+      }
+      
+      if (result.success) {
+        $('#test-results').html('Test Passed!').css({ color: 'green' });
+        return;
+      }
     }
+    
+    $('#test-results').html('Test Failed:<br>' + result.message).css({ color: 'red' });
+    if (result.error) throw result.error;
   };
 
   return module;
