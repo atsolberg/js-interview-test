@@ -30,4 +30,4 @@ function generateTree(employees) {
   // YOUR CODE ENDS HERE
 
   return ceo;
-};
+}
